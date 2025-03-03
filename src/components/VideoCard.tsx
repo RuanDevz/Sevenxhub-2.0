@@ -46,16 +46,9 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-          <div className="p-4 w-full">
-            <div className="flex items-center justify-center">
-              <button className="bg-red-800 dark:bg-red-700 text-white rounded-full p-3 transform transition-transform duration-300 group-hover:scale-110">
-                <Play size={20} fill="white" />
-              </button>
-            </div>
-          </div>
         </div>
         <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-          {video.length}
+          
         </div>
       </div>
       <div className="p-4">
@@ -65,7 +58,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
         <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400">
           <div className="flex items-center">
             <Clock size={14} className="mr-1" />
-            <span>{formatDate(video.created)}</span>
+            <span>{formatDate(video.uploaded)}</span>
           </div>
           <div className="flex items-center">
             <Eye size={14} className="mr-1" />

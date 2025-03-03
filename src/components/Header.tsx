@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
-import { Moon, Sun, Search, Menu, X } from 'lucide-react';
+import { Moon, Sun, Search, Menu, X, TrendingUp, Grid, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface HeaderProps {
@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md transition-colors duration-300">
+    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
@@ -31,8 +31,44 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          {/* Desktop Navigation - centralizado */}
+          <div className="hidden md:flex flex-1 justify-center items-center space-x-6">
+            <nav className="flex items-center space-x-6">
+              <Link
+                to="/"
+                className="text-gray-700 dark:text-gray-300 hover:text-red-800 dark:hover:text-red-500 transition-colors duration-300"
+              >
+                Home
+              </Link>
+              <Link
+                to="/categories"
+                className="text-gray-700 dark:text-gray-300 hover:text-red-800 dark:hover:text-red-500 transition-colors duration-300"
+              >
+                Categories
+              </Link>
+              <Link
+                to="/trending"
+                className="flex items-center text-gray-700 dark:text-gray-300 hover:text-red-800 dark:hover:text-red-500 transition-colors duration-300"
+              >
+                <TrendingUp size={16} className="mr-1" /> Trending
+              </Link>
+              <Link
+                to="/new"
+                className="flex items-center text-gray-700 dark:text-gray-300 hover:text-red-800 dark:hover:text-red-500 transition-colors duration-300"
+              >
+                <Grid size={16} className="mr-1" /> New
+              </Link>
+              <Link
+                to="/popular"
+                className="flex items-center text-gray-700 dark:text-gray-300 hover:text-red-800 dark:hover:text-red-500 transition-colors duration-300"
+              >
+                <Star size={16} className="mr-1" /> Popular
+              </Link>
+            </nav>
+          </div>
+
+          {/* Lado direito: Search e Theme Toggle */}
+          <div className="hidden md:flex items-center space-x-4">
             <form onSubmit={handleSearchSubmit} className="relative">
               <input
                 type="text"
@@ -76,6 +112,55 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 animate-fadeIn">
+            <nav className="mb-4">
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    to="/"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block text-center text-gray-700 dark:text-gray-300 hover:text-red-800 dark:hover:text-red-500 transition-colors duration-300"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/categories"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block text-center text-gray-700 dark:text-gray-300 hover:text-red-800 dark:hover:text-red-500 transition-colors duration-300"
+                  >
+                    Categories
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/trending"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block text-center text-gray-700 dark:text-gray-300 hover:text-red-800 dark:hover:text-red-500 transition-colors duration-300"
+                  >
+                    Trending
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/new"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block text-center text-gray-700 dark:text-gray-300 hover:text-red-800 dark:hover:text-red-500 transition-colors duration-300"
+                  >
+                    New
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/popular"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block text-center text-gray-700 dark:text-gray-300 hover:text-red-800 dark:hover:text-red-500 transition-colors duration-300"
+                  >
+                    Popular
+                  </Link>
+                </li>
+              </ul>
+            </nav>
             <form onSubmit={handleSearchSubmit} className="relative mb-4">
               <input
                 type="text"

@@ -9,13 +9,19 @@ export interface Video {
   views: number;
   protected: number;
   single_img: string;
+  uploaded: string
+}
+
+export interface VideoResult {
+  files: Video[];
+  results_total: string;
 }
 
 export interface ApiResponse {
   status: number;
   msg: string;
   total_count: number;
-  result: Video[];
+  result: VideoResult;
 }
 
 export interface ThemeContextType {
